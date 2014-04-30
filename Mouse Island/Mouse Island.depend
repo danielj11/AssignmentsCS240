@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1398819644 source:c:\users\jacob\documents\c++ prog\mouse island\main.cpp
+	"mouseisland.h"
+
+1398820648 c:\users\jacob\documents\c++ prog\mouse island\mouseisland.h
+	<iostream>
+	<vector>
+	<fstream>
+	<string>
+	<ctime>
+	<algorithm>
+	<cstdlib>
+
+1398821182 source:c:\users\jacob\documents\c++ prog\mouse island\controller.cpp
+	"mouseisland.h"
+
+1398821208 source:c:\users\jacob\documents\c++ prog\mouse island\cat.cpp
+	"mouseisland.h"
+
+1398818793 source:c:\users\jacob\documents\c++ prog\mouse island\animal.cpp
+	"mouseisland.h"
+
+1398820996 source:c:\users\jacob\documents\c++ prog\mouse island\mouse.cpp
+	"mouseisland.h"
+
