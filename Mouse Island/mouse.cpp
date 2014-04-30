@@ -56,6 +56,7 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 }
                 else if (arr[checkY-1][checkX] == catPos)
                 {
+                    murdered++;
                     dead = true;
                     cout << "EATEN!" << endl;
                 }
@@ -82,6 +83,7 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 }
                 else if (arr[checkY+1][checkX] == catPos)
                 {
+                    murdered++;
                     dead = true;
                     cout << "EATEN!" << endl;
                 }
@@ -109,6 +111,7 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 }
                 else if (arr[checkY][checkX+1] == catPos)
                 {
+                    murdered++;
                     dead = true;
                     cout << "EATEN!" << endl;
                 }
@@ -136,6 +139,7 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 }
                 else if (arr[checkY][checkX-1] == catPos)
                 {
+                    murdered++;
                     cout << "Eaten!!!" << endl;
                     dead = true;
                 }
@@ -155,6 +159,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
 
     if(((yPos == 0 || yPos == length - 1) || (xPos == 0 || xPos == width - 1)) && arr[yPos][xPos] == bridge)
     {
-        won = true;
+        won++;
     }
 }

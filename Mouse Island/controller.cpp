@@ -175,7 +175,7 @@ void Controller::moveAnimals()
     if (myMouse.xPos == myCat.xPos && myMouse.yPos == myCat.xPos && myMouse.hidden == false)
     {
         cout << "EATEN!" << endl;
-        eatenCount++;
+        eatenCount = eatenCount + myMouse.murdered;
         myMouse.dead = true;
     }
 
@@ -201,13 +201,14 @@ void Controller::runSim()
         {
             moveAnimals();
             printMap();
-            if (myMouse.dead)
+            if (myMouse.dead || myMouse.won)
             {
                 break;
             }
         }
         starveCount = starveCount + myMouse.starve;
         drownedCount = drownedCount + myMouse.drown;
+        eatenCount = eatenCount + myMouse.murdered;
         if (myMouse.won)
         {
             winCount++;
@@ -215,4 +216,6 @@ void Controller::runSim()
 
         currentSim++;
     }
+
+    cout << eatenCount << endl;
 }
