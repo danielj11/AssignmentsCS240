@@ -10,20 +10,7 @@ Animal::Animal()
     dead = false;
 }
 
-int Animal::getXPos()
-{
-    return xPos;
-}
 
-int Animal::getYPos()
-{
-    return yPos;
-}
-
-int Animal::getPrevSpace()
-{
-    return prevSpace;
-}
 void Animal::setXPos(int newX)
 {
     xPos = newX;

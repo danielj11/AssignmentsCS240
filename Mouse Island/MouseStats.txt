@@ -1,0 +1,12 @@
+Map 1
+Simulation was run 5 time(s).
+Seed: srand(time(NULL))
+The mouse drowned 0 time(s).
+The mouse starved to death 0 time(s).
+The mouse was killed 11 time(s).
+The mouse escaped 0 times.
+0 0 0 0 
+0 0 0 0 
+0 0 0 0 
+0 1 0 0 
+0 0 0 0 

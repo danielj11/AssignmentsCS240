@@ -26,7 +26,7 @@ void Mouse::findStart(int (&arr)[20][20])
     }
 }
 
-void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
+void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, int width)
 {
     bool validMove = false;
     int mapW = width - 1;
@@ -64,7 +64,8 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 prevX = xPos;
                 prevY = yPos;
                 yPos--;
-                arr[yPos][xPos] = catPos;
+                arr[yPos][xPos] = mousePos;
+                countArr[yPos][xPos]++;
                 validMove = true;
             }
             break;
@@ -93,6 +94,7 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 prevSpace = arr[prevY][prevX];
                 yPos++;
                 arr[yPos][xPos] = mousePos;
+                countArr[yPos][xPos]++;
                 validMove = true;
             }
             break;
@@ -121,6 +123,7 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 prevSpace = arr[prevY][prevX];
                 xPos++;
                 arr[yPos][xPos] = mousePos;
+                countArr[yPos][xPos]++;
                 validMove = true;
             }
             break;
@@ -149,6 +152,7 @@ void Mouse::moveMouse(int (&arr)[20][20], int length, int width)
                 prevSpace = arr[prevY][prevX];
                 xPos--;
                 arr[yPos][xPos] = mousePos;
+                countArr[yPos][xPos]++;
                 validMove = true;
             }
             break;

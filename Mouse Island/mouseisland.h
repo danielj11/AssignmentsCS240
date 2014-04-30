@@ -26,11 +26,6 @@ class Animal
 public:
     Animal();
     void findStart(int (&arr)[20][20]);
-    int getXPos();
-    int getYPos();
-    int getPrevX();
-    int getPrevY();
-    int getPrevSpace();
     bool getDead();
     void setXPos(int newX);
     void setYPos(int newY);
@@ -49,18 +44,8 @@ class Mouse:public Animal
 {
 public:
     Mouse();
-    void moveMouse(int (&arr)[20][20], int length, int width);
+    void moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, int width);
     void findStart(int (&arr)[20][20]);
-    int getXPos();
-    int getYPos();
-    int getPrevX();
-    int getPrevY();
-    int getPrevSpace();
-    void setXPos();
-    void setYPos();
-    void setPrevX();
-    void setPrevY();
-    void setPrevSpace();
     int starve;
     int drown;
     int murdered;
@@ -88,12 +73,14 @@ public:
     void printMap();
     void moveAnimals();
     void setPositions();
+    void writeToFile();
 
 private:
     Mouse myMouse;
     Cat myCat;
     vector <int> mapValues;
     int islandMap[20][20];
+    int frequencyCount[20][20];
     string mapName;
     int mapLength;
     int mapWidth;

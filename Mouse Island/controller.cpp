@@ -73,11 +73,11 @@ bool Controller::readFile()
 
     inFile.close();
 ///Dunno why I print here
-    for(int i = 0; i < mapValues.size(); i++)
+    /*for(int i = 0; i < mapValues.size(); i++)
     {
         cout << mapValues[i] << endl;
     }
-
+*/
 
     return true;
 }
@@ -89,6 +89,7 @@ void Controller::initializeMap()
         for (int j = 0; j < 20; j++)
         {
             islandMap[i][j] = emptySpace;//initializing every space to 5
+            frequencyCount[i][j] = 0;
         }
     }
 }
@@ -152,7 +153,7 @@ void Controller::moveAnimals()
     //myCat.findStart(islandMap);
     //myMouse.findStart(islandMap);
     myCat.moveCat(islandMap, mapLength, mapWidth);
-    myMouse.moveMouse(islandMap, mapLength, mapWidth);
+    myMouse.moveMouse(islandMap, frequencyCount, mapLength, mapWidth);
 
     myMouse.starveCountdown--;
 
@@ -164,6 +165,7 @@ void Controller::moveAnimals()
     {
         myMouse.hidden = false;
     }
+
     if (myMouse.yPos == foodY && myMouse.xPos == foodX && !eatenFood )//will the mouse eat the food?
     {
         myMouse.starve = 100;
@@ -171,24 +173,45 @@ void Controller::moveAnimals()
         foodX = 0;
         eatenFood = true;
     }
-    //if mouse and cat on same space, mouse dies (if he isn't in mousehole)
-    if (myMouse.xPos == myCat.xPos && myMouse.yPos == myCat.xPos && myMouse.hidden == false)
-    {
-        cout << "EATEN!" << endl;
-        eatenCount = eatenCount + myMouse.murdered;
-        myMouse.dead = true;
-    }
 
     if(myMouse.starveCountdown == 0)//if mouse is starving
     {
-        myMouse.dead == true;
+        myMouse.dead = true;
     }
+}
+
+void Controller::writeToFile()
+{
+    ofstream outFile("MouseStats.txt");
+    outFile << mapName << endl;
+    outFile << "Simulation was run " << numberOfSimulations << " time(s)." << endl;
+    outFile << "Seed: srand(time(NULL))" << endl;
+    outFile << "The mouse drowned " << drownedCount << " time(s)." << endl;
+    outFile << "The mouse starved to death " << starveCount << " time(s)." << endl;
+    outFile << "The mouse was killed " << eatenCount << " time(s)." << endl;
+    outFile << "The mouse escaped " <<  winCount << " times." << endl;
+
+    for (int i = 0; i < mapLength; i++)
+    {
+        for (int j = 0; j < mapWidth; j++)
+        {
+            outFile << frequencyCount[i][j] << " ";
+        }
+
+        outFile << endl;
+    }
+
+    outFile.close();
 }
 
 void Controller::runSim()
 {
     int currentSim = 0;
-    readFile();
+    bool fileRead = false;
+    while(!fileRead)
+    {
+        fileRead = readFile();
+    }
 
     while (currentSim != numberOfSimulations)
     {
@@ -217,5 +240,6 @@ void Controller::runSim()
         currentSim++;
     }
 
-    cout << eatenCount << endl;
+    writeToFile();
+    cout << "Look at the MouseStats file to see how the mouse did!" << endl;
 }
