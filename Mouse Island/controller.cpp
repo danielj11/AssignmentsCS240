@@ -6,6 +6,8 @@ Controller::Controller()
     drownedCount = 0;
     starveCount = 0;
     winCount = 0;
+    randomSeed = rand();
+
 }
 
 bool Controller::readFile()
@@ -124,11 +126,9 @@ void Controller::printMap()
 {
     cout << endl;
 
-    for (int i = 0; i < mapLength; i++)//change 20 to length
+    for (int i = 0; i < mapLength; i++)
     {
-        //cout << " | ";
-
-        for (int j = 0; j < mapWidth; j++)//change 20 to width
+        for (int j = 0; j < mapWidth; j++)
         {
             if (islandMap[i][j] != 5)//is number != default value
             {
@@ -144,8 +144,7 @@ void Controller::printMap()
         }
         cout << endl;
     }
-    cout << "   ---------------------------------------" << endl;
-    //cout << endl;
+    cout << "------------------" << endl;
 }
 
 void Controller::moveAnimals()
@@ -168,7 +167,7 @@ void Controller::moveAnimals()
 
     if (myMouse.yPos == foodY && myMouse.xPos == foodX && !eatenFood )//will the mouse eat the food?
     {
-        myMouse.starve = 100;
+        myMouse.starveCountdown = 100;
         foodY = 0;
         foodX = 0;
         eatenFood = true;
@@ -185,7 +184,7 @@ void Controller::writeToFile()
     ofstream outFile("MouseStats.txt");
     outFile << mapName << endl;
     outFile << "Simulation was run " << numberOfSimulations << " time(s)." << endl;
-    outFile << "Seed: srand(time(NULL))" << endl;
+    outFile << "Seed: " << randomSeed << endl;
     outFile << "The mouse drowned " << drownedCount << " time(s)." << endl;
     outFile << "The mouse starved to death " << starveCount << " time(s)." << endl;
     outFile << "The mouse was killed " << eatenCount << " time(s)." << endl;
@@ -241,5 +240,5 @@ void Controller::runSim()
     }
 
     writeToFile();
-    cout << "Look at the MouseStats file to see how the mouse did!" << endl;
+    cout << "Look at the stats file to see how the mouse did!" << endl;
 }

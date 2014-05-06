@@ -95,6 +95,7 @@ private:
     int foodY;
     bool eatenFood;//has the food been eaten?
     bool inHole;//is the mouse in the hole?
+    int randomSeed;
 };
 
 

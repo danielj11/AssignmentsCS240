@@ -48,7 +48,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, i
                 {
                     drown++;
                     dead = true;
-                    cout << "DROWNED!" << endl;
                 }
                 else if (arr[checkY-1][checkX] == food)
                 {
@@ -58,7 +57,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, i
                 {
                     murdered++;
                     dead = true;
-                    cout << "EATEN!" << endl;
                 }
                 arr[yPos][xPos] = prevSpace;
                 prevX = xPos;
@@ -76,7 +74,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, i
                 {
                     drown++;
                     dead = true;
-                    cout << "DROWNED!" << endl;
                 }
                 else if (arr[checkY+1][checkX] == food)
                 {
@@ -86,7 +83,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, i
                 {
                     murdered++;
                     dead = true;
-                    cout << "EATEN!" << endl;
                 }
                 arr[yPos][xPos] = prevSpace;
                 prevX = xPos;
@@ -105,7 +101,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, i
                 {
                     drown++;
                     dead = true;
-                    cout << "DROWNED!" << endl;
                 }
                 else if (arr[checkY][checkX+1] == food)
                 {
@@ -115,7 +110,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, i
                 {
                     murdered++;
                     dead = true;
-                    cout << "EATEN!" << endl;
                 }
                 arr[yPos][xPos] = prevSpace;
                 prevX = xPos;
@@ -132,7 +126,6 @@ void Mouse::moveMouse(int (&arr)[20][20], int (&countArr)[20][20], int length, i
             {
                 if (arr[checkY][checkX-1] == water)
                 {
-                    cout << "Drowned!!!" << endl;
                     drown++;
                     dead = true;
                 }
